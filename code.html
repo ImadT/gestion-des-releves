@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Radeeta 2</title>
+
+	<script type="text/javascript" src= "script.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+
+	<div class= "container">
+		<img src="1.png" height="90" width="250">
+		<div class= "center">
+
+			<p><label for= "référence">référence:</label>....</p>
+	    	<p><label for="Num.Cpt">Num.Cpt:  </label>....</p>
+			<label for= "index">Index:</label><input type= "text" id= "index" size="5">
+            <input type="checkbox" value="Patente"> Patente<br>
+        <br>
+        	<label for= "annotation">Annotation:</label>
+        	<select id= "annotation" onchange="getAnomalieByAnotation()">
+        		<option></option>
+				<option>01-RLV SS ANOMALIE</option>
+				<option>12-CPTR INTROUVABLE</option>
+				<option>13-CPTR INACCESSIBLE</option>
+				<option>15-CPTR A L'INTERIEUR</option>
+				<option>18-CPTR ENTERRE</option>
+				<option>30-IDX NON RELEVE</option>
+				<option>31-IDX ILLISIBLE</option>
+				<option>32-CPTR CASSE</option>
+				<option>33-CPTR BLOQUE</option>
+				<option>60-CPTR CHANGE</option>
+				<option>88-PASSAGE A ZERO</option>
+            </select>
+            <br>
+
+            <label for= "Anomalie">Anomalie</label>
+	        <select id= "Anomalie">
+	        	<option></option>
+
+	        	<script type="text/javascript">
+	        		const anomalie =["01-00-","01-03-LOCAL VIDE","01-05-CPTR POSE A L'ENVERS","01-06-CPTR MAL POSE","01-07-FUITE COTE ABONNE","01-08-FUITE COTE RADEETA","01-10-CPTR DEPLOMBE","01-19-FUITE CPTR ","12-00-","12-20-FRAUDE","12-21-CPTR DEPOSE","13-03-LOCAL VIDE","13-23-REFUS ABONNE","13-00-","15-00-","18-00-","30-70-BY-PASS SUR CG","31-00-","32-00-	","33-00-","33-30-TETE DE LECTURE DETERIOREE","60-00-","88-00-"];
+
+
+
+
+	        	    function getAnomalieByAnotation() {
+	        			var annot = document.getElementById("annotation").value;
+	        			let con = 0;
+	        			let num = 0;
+	        			/*vider la balise option*/
+	        			var select = document.getElementById("Anomalie");
+	        			while(select.options.length) {
+	        				select.remove(0);
+	        			}
+	        			/*recharger la balise option*/
+	        			while(con < anomalie.length) {
+	        				if(anomalie[con].startsWith(annot.split("-")[0])) {
+	        					/*
+	        					document.getElementById("Anomalie").option[num].text.innerHTML = anomalie[con];
+	        					*/
+
+	        					var x = document.getElementById("Anomalie");
+	        					var c = document.createElement("option");
+	        					c.text = anomalie[con];
+
+	        					x.options.add(c,num);
+
+	        					
+	        					num++;
+	        				}
+	        				con++;
+	        			}
+
+	        		}
+	        	</script>
+            </select>
+            <p id= "test"></p>
+
+		</div>
+
+		<div id= "block2">
+			<button value="Precedent" id= "Precedent">Precedant</button>
+			<button value="Valide" id= "Valide">Valide</button>
+			<button value="Suivant" id= "Suivant">Suivant</button>
+			<p id= "secteur">1/23</p>
+		</div>
+		<script type="text/javascript">
+			button1 = document.getElementById("Precedent");
+			button2 = document.getElementById("Valide");
+			button3 = document.getElementById("Suivant");
+
+			button1.addEventListener("click",function(){
+				alert("button1");
+			});
+
+			button2.addEventListener("click",function(){
+				alert("button2");
+			});
+
+			button3.addEventListener("click",function(){
+				alert("button3");
+			});			
+		</script>
+
+		<p id= "saison">2018/2019</p>
+
+	</div>
+
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script type="text/javascript" src= "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
